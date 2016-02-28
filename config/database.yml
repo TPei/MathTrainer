@@ -1,12 +1,11 @@
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   pool: 5
-  username: root
-  password: root
+  username: demouser
+  password: dummypassword
   host: localhost
-  port: 8889
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  port: 5432
 
 development:
   <<: *default
