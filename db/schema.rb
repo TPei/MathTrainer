@@ -11,29 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228112355) do
+ActiveRecord::Schema.define(version: 20160228112320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "exercise_types", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.integer  "Level_id"
-    t.float    "min_number"
-    t.float    "max_number"
-    t.boolean  "floats_allowed"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "exercise_types_operators", id: false, force: :cascade do |t|
-    t.integer "exercise_type_id"
-    t.integer "operator_id"
-  end
-
-  add_index "exercise_types_operators", ["exercise_type_id"], name: "index_exercise_types_operators_on_exercise_type_id", using: :btree
-  add_index "exercise_types_operators", ["operator_id"], name: "index_exercise_types_operators_on_operator_id", using: :btree
 
   create_table "levels", force: :cascade do |t|
     t.string   "title"
@@ -43,10 +24,16 @@ ActiveRecord::Schema.define(version: 20160228112355) do
 
   create_table "operators", force: :cascade do |t|
     t.string   "title"
+    t.string   "description"
+    t.integer  "level_id"
+    t.string   "operator_name"
     t.string   "sign"
     t.boolean  "is_unary"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "min_number"
+    t.float    "max_number"
+    t.boolean  "floats_allowed"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
